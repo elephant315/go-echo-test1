@@ -1,0 +1,25 @@
+# Flight Itinerary API
+
+###
+# @name POST /itinerary
+POST http://localhost:8080/itinerary
+Content-Type: application/json
+
+[
+  [
+    "JFK",
+    "LAX"
+  ],
+  [
+    "LAX",
+    "DXB"
+  ],
+  [
+    "DXB",
+    "SFO"
+  ],
+  [
+    "SFO",
+    "SJC"
+  ]
+]

@@ -1,0 +1,56 @@
+{
+  "info": {
+    "name": "Flight Itinerary API",
+    "description": "Collection for testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /itinerary",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n  [\"JFK\", \"LAX\"],\n  [\"LAX\", \"DXB\"],\n  [\"DXB\", \"SFO\"],\n  [\"SFO\", \"SJC\"]\n]"
+        },
+        "url": {
+          "raw": "http://localhost:8080/itinerary",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["itinerary"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "pm.test(\"Status code is 200\", function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "pm.test(\"Response is JSON\", function () {",
+          "    pm.response.to.be.json;",
+          "});",
+          "",
+          "pm.test(\"Response has expected itinerary\", function () {",
+          "    const jsonData = pm.response.json();",
+          "    pm.expect(jsonData).to.eql([\"JFK\", \"LAX\", \"DXB\", \"SFO\", \"SJC\"]);",
+          "});"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ]
+}
